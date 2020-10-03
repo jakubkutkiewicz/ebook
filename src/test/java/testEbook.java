@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,8 +44,27 @@ public class testEbook {
     @Test
     public void registerNewUser() {
         ebook ebook = new ebook(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         ebook.registerNewUser();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"app\"]/div/form/div[1]/p")));
 
     }
+
+    @Test
+    public void registerNewUserFailedDifferPass() {
+        ebook ebook = new ebook(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        ebook.failRegisterNewUserDifferPass();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("alert__content")));
+
+    }
+    @Test
+    public void registerNewUserFailedNoLogin(){
+        ebook ebook = new ebook(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        ebook.failRegisterNewUserNoLogin();
+        WebElement text = driver.findElement(By.cssSelector("#app > div > form > div.alert.alert--error > p"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text,"You can't leave fields empty"));
+    }
 }
+
