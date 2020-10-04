@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -5,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 public class ebook extends AbstractPage {
 
@@ -18,13 +20,28 @@ public class ebook extends AbstractPage {
     static WebElement button;
 
     @FindBy(css = "button[id='register-btn']")
-    static WebElement singUp;
+    static WebElement signUp;
 
     @FindBy(css = "input[id='password-repeat']")
     static WebElement passRepeat;
 
-    @FindBy(css = "input[id='login']")
-    static WebElement loginSingUp;
+    @FindBy(css = "button[id='add-title-button']")
+    static WebElement addNewTitle;
+
+    @FindBy(css = "input[name='title']")
+    static WebElement title;
+
+    @FindBy(css = "input[name='author']")
+    static WebElement author;
+
+    @FindBy(css = "input[name='year']")
+    static WebElement year;
+
+    @FindBy(css = "button[name='submit-button']")
+    static WebElement addTitleButton;
+
+    @FindBy(css = "button[name='remove-btn btn--small btn btn--error']")
+    static WebElement removeButton;
 
 
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -42,44 +59,40 @@ public class ebook extends AbstractPage {
         super(driver);
     }
 
-    public void loginCorrect() {
-        login.sendKeys("demo");
-        password.sendKeys("demo");
-        button.click();
-    }
-
-    public void loginFail() {
-        login.sendKeys("demooo");
-        password.sendKeys("demo");
+    public void login() {
+        login.sendKeys("jakubk");
+        password.sendKeys("jakubk");
         button.click();
     }
 
     public void registerNewUser() {
-        singUp.click();
+        signUp.click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(passRepeat));
         login.sendKeys(randomString(5));
         password.sendKeys("sssss");
         passRepeat.sendKeys("sssss");
-        singUp.click();
-    }
-    public void failRegisterNewUserDifferPass() {
-        singUp.click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(passRepeat));
-        login.sendKeys(randomString(5));
-        password.sendKeys("sssss");
-        passRepeat.sendKeys("ssss");
-        singUp.click();
+        signUp.click();
     }
 
-    public void failRegisterNewUserNoLogin(){
-        singUp.click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(passRepeat));
-        password.sendKeys("sssss");
-        passRepeat.sendKeys("ssss");
-        singUp.click();
+
+    public void addNewTitle() {
+        login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(addNewTitle));
+        addNewTitle.click();
+        title.sendKeys("Nazwa Ksiazki");
+        author.sendKeys("Autor Ksiazki");
+        year.sendKeys("2020");
+        addTitleButton.click();
+
     }
 
-}
+    public void remove() {
+        login();
+        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"titles\"]/ul"));
+
+        }
+    }
+
+

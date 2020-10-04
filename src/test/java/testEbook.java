@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class testEbook {
     WebDriver driver;
 
@@ -22,27 +24,28 @@ public class testEbook {
     }
 
 
-
     @Test
-    public void testLogin() {
+    public void testLoginPass() {
         ebook ebook = new ebook(driver);
-        ebook.loginCorrect();
+        ebook.login();
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"titles\"]/h2")));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"titles\"]")));
 
     }
 
     @Test
-    public void loginFailed() {
+    public void testloginFail() {
         ebook ebook = new ebook(driver);
-        ebook.loginFail();
+        ebook.login.sendKeys("jakubk");
+        ebook.password.sendKeys("blednehaslo");
+        ebook.button.click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"app\"]/div/form/div[1]/p")));
 
     }
 
     @Test
-    public void registerNewUser() {
+    public void registerNewUserPass() {
         ebook ebook = new ebook(driver);
         WebDriverWait wait = new WebDriverWait(driver, 5);
         ebook.registerNewUser();
@@ -51,20 +54,112 @@ public class testEbook {
     }
 
     @Test
-    public void registerNewUserFailedDifferPass() {
+    public void registerNewUserFailedDifferPassword() {
         ebook ebook = new ebook(driver);
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        ebook.failRegisterNewUserDifferPass();
+        ebook.signUp.click();
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.passRepeat));
+        ebook.login.sendKeys(ebook.randomString(5));
+        ebook.password.sendKeys("sssss");
+        ebook.passRepeat.sendKeys("ssss");
+        ebook.signUp.click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("alert__content")));
 
     }
+
     @Test
-    public void registerNewUserFailedNoLogin(){
+    public void registerNewUserFailedNoLogin() {
         ebook ebook = new ebook(driver);
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        ebook.failRegisterNewUserNoLogin();
+        ebook.signUp.click();
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.passRepeat));
+        ebook.password.sendKeys("sssss");
+        ebook.passRepeat.sendKeys("ssss");
+        ebook.signUp.click();
         WebElement text = driver.findElement(By.cssSelector("#app > div > form > div.alert.alert--error > p"));
-        wait.until(ExpectedConditions.textToBePresentInElement(text,"You can't leave fields empty"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text, "You can't leave fields empty"));
     }
-}
+
+    @Test
+    public void addNewTitleTest() {
+        ebook ebook = new ebook(driver);
+        ebook.addNewTitle();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"titles\"]")));
+    }
+
+    @Test
+    public void addNewTitleTestFailNoData() {
+        ebook ebook = new ebook(driver);
+        ebook.login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.addNewTitle.click();
+        ebook.title.sendKeys("");
+        ebook.author.sendKeys("");
+        ebook.year.sendKeys("");
+        ebook.addTitleButton.click();
+        WebElement text = driver.findElement(By.className("alert__content"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text, "\"title\" field shouldn't be empty..."));
+    }
+
+
+    @Test
+    public void addNewTitleTestFailNoTitle() {
+        ebook ebook = new ebook(driver);
+        ebook.login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.addNewTitle.click();
+        ebook.title.sendKeys("");
+        ebook.author.sendKeys("Autor Ksiazki");
+        ebook.year.sendKeys("2020");
+        ebook.addTitleButton.click();
+        WebElement text = driver.findElement(By.className("alert__content"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text, "\"title\" field shouldn't be empty..."));
+    }
+
+    @Test
+    public void addNewTitleTestFailNoWriter() {
+        ebook ebook = new ebook(driver);
+        ebook.login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.addNewTitle.click();
+        ebook.title.sendKeys("Tytul Ksiazki");
+        ebook.author.sendKeys("");
+        ebook.year.sendKeys("2020");
+        ebook.addTitleButton.click();
+        WebElement text = driver.findElement(By.className("alert__content"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text, "\"author\" field shouldn't be empty..."));
+    }
+
+    @Test
+    public void addNewTitleTestFailNoYear() {
+        ebook ebook = new ebook(driver);
+        ebook.login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.addNewTitle.click();
+        ebook.title.sendKeys("Tytul Ksiazki");
+        ebook.author.sendKeys("Autor Ksiazki");
+        ebook.year.sendKeys("");
+        ebook.addTitleButton.click();
+        WebElement text = driver.findElement(By.className("alert__content"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text, "\"year\" field shouldn't be empty..."));
+    }
+
+    @Test
+    public void removeTitleFromList(){
+        ebook ebook = new ebook(driver);
+        ebook.login();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"titles\"]/ul"));
+
+
+
+        }
+        }
+
 
