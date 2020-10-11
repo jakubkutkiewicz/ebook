@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -9,10 +10,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Objects;
 
 public class testEbook {
     WebDriver driver;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        testEbook testEbook = (testEbook) o;
+        return driver.equals(testEbook.driver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver);
+    }
 
     @Before
     public void testSetup() {
@@ -149,17 +163,47 @@ public class testEbook {
         wait.until(ExpectedConditions.textToBePresentInElement(text, "\"year\" field shouldn't be empty..."));
     }
 
+
     @Test
-    public void removeTitleFromList(){
+    public void removeTitleFromList() {
         ebook ebook = new ebook(driver);
         ebook.login();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
-        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"titles\"]/ul"));
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        List<WebElement> listBefore = driver.findElements(By.xpath("//li[contains(@id,'title-')]"));
+        int listBeforesize = listBefore.size();
+        for (int i = 0; i < listBeforesize; i++)
+            System.out.println("size list before add/remove position is:" + listBeforesize);
+        ebook.addNewTitle.click();
+        ebook.title.sendKeys("ksiazka do usuniecia");
+        ebook.author.sendKeys("Autor Ksiazki do usuniecia ");
+        ebook.year.sendKeys("2020");
+        ebook.addTitleButton.click();
+        WebDriverWait wait2 = new WebDriverWait(driver, 5);
+        wait2.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.remove();
+        driver.navigate().refresh();
+
+        WebDriverWait wait3 = new WebDriverWait(driver, 5);
+        wait3.until(ExpectedConditions.elementToBeClickable(ebook.login));
+        ebook.login();
+
+        WebDriverWait wait4 = new WebDriverWait(driver, 5);
+        wait4.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        List<WebElement> listAfter = driver.findElements(By.xpath("//li[contains(@id,'title-')]"));
+        ;
+        int listAftersize = listAfter.size();
+        for (int i = 0; i < listAftersize; i++)
+            System.out.println("size list after add/remove position is:" + listAftersize);
+        Assert.assertEquals(listBeforesize, listAftersize);
+
+
+    }
+}
 
 
 
-        }
-        }
+
+
 
 

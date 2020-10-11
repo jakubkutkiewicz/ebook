@@ -40,7 +40,7 @@ public class ebook extends AbstractPage {
     @FindBy(css = "button[name='submit-button']")
     static WebElement addTitleButton;
 
-    @FindBy(css = "button[name='remove-btn btn--small btn btn--error']")
+    @FindBy(css = "button[class='remove-btn btn--small btn btn--error']")
     static WebElement removeButton;
 
 
@@ -70,8 +70,8 @@ public class ebook extends AbstractPage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(passRepeat));
         login.sendKeys(randomString(5));
-        password.sendKeys("sssss");
-        passRepeat.sendKeys("sssss");
+        password.sendKeys("haslo");
+        passRepeat.sendKeys("haslo");
         signUp.click();
     }
 
@@ -81,18 +81,20 @@ public class ebook extends AbstractPage {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(addNewTitle));
         addNewTitle.click();
-        title.sendKeys("Nazwa Ksiazki");
-        author.sendKeys("Autor Ksiazki");
+        title.sendKeys("tytul ksiazki");
+        author.sendKeys("autor ksiazki");
         year.sendKeys("2020");
         addTitleButton.click();
 
     }
 
     public void remove() {
-        login();
-        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"titles\"]/ul"));
 
-        }
+//        WebDriverWait wait = new WebDriverWait(driver, 5);
+//        wait.until(ExpectedConditions.elementToBeClickable(removeButton));
+        removeButton.click();
     }
+}
+
 
 
