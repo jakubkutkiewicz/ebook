@@ -106,7 +106,6 @@ public class ebook extends AbstractPage {
     }
 
     public void removePositionFromList() {
-        login();
         removeButton.click();
     }
 

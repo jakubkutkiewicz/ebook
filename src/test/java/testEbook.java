@@ -186,7 +186,7 @@ public class testEbook {
         driver.navigate().refresh();
 
         WebDriverWait wait3 = new WebDriverWait(driver, 5);
-        wait3.until(ExpectedConditions.elementToBeClickable(ebook.login));
+        wait3.until(ExpectedConditions.elementToBeClickable(ebook.button));
         ebook.login();
 
         WebDriverWait wait4 = new WebDriverWait(driver, 5);
