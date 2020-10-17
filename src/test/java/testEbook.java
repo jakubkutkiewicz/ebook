@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Objects;
 
+
 public class testEbook {
     WebDriver driver;
 
@@ -30,7 +31,7 @@ public class testEbook {
 
     @Before
     public void testSetup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\jakub\\IdeaProjects\\kodilla-course\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\selenium-drivers\\Chrome\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://ta-ebookrental-fe.herokuapp.com/login");
         PageFactory.initElements(driver, ebook.class);
@@ -97,7 +98,7 @@ public class testEbook {
     @Test
     public void addNewTitleTest() {
         ebook ebook = new ebook(driver);
-        ebook.addNewTitle();
+        ebook.addNewTitleToList();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"titles\"]")));
     }
@@ -181,7 +182,7 @@ public class testEbook {
         ebook.addTitleButton.click();
         WebDriverWait wait2 = new WebDriverWait(driver, 5);
         wait2.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
-        ebook.remove();
+        ebook.removePositionFromList();
         driver.navigate().refresh();
 
         WebDriverWait wait3 = new WebDriverWait(driver, 5);
@@ -191,13 +192,37 @@ public class testEbook {
         WebDriverWait wait4 = new WebDriverWait(driver, 5);
         wait4.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
         List<WebElement> listAfter = driver.findElements(By.xpath("//li[contains(@id,'title-')]"));
-        ;
         int listAftersize = listAfter.size();
         for (int i = 0; i < listAftersize; i++)
             System.out.println("size list after add/remove position is:" + listAftersize);
         Assert.assertEquals(listBeforesize, listAftersize);
 
 
+    }
+
+    @Test
+    public void editAllFieldsInPostion() {
+        ebook ebook = new ebook(driver);
+        ebook.editPostion();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebElement text1 = driver.findElement(By.xpath("//div[@class=\"flex flex-grow--1 w-100\"]"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text1, "edited"));
+        wait.until(ExpectedConditions.textToBePresentInElement(text1, "2000"));
+
+    }
+
+    @Test
+    public void showCopiesListTest(){
+        ebook ebook = new ebook(driver);
+        ebook.showCopies();
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='return-button']")));
+
+    }
+    @Test
+    public void addNewCopyTest(){
+        ebook ebook = new ebook(driver);
+        ebook.addNewCopies();
     }
 }
 

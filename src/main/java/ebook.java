@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
-import java.util.List;
 
 public class ebook extends AbstractPage {
 
@@ -43,6 +42,24 @@ public class ebook extends AbstractPage {
     @FindBy(css = "button[class='remove-btn btn--small btn btn--error']")
     static WebElement removeButton;
 
+    @FindBy(css = "button[class='edit-btn btn--small btn btn--warning']")
+    static WebElement editButton;
+
+    @FindBy(css = "button[class='btn btn--primary']")
+    static WebElement editTitleSubmitButton;
+
+    @FindBy(css = "button[class='show-copies-btn btn--small btn btn--primary']")
+    static WebElement showCopiesButton;
+
+    @FindBy(css = "button[name='add-item-button']")
+    static WebElement addNewCopiesButton;
+
+//    @FindBy(css = "input[class='\"vdp-datepicker date-picker__input\"']")
+//    static WebElement purchaseDateCopy;
+
+    @FindBy(css = "button[name='submit-button']")
+    static WebElement addCopySubmitButton;
+
 
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     static SecureRandom rnd = new SecureRandom();
@@ -76,7 +93,7 @@ public class ebook extends AbstractPage {
     }
 
 
-    public void addNewTitle() {
+    public void addNewTitleToList() {
         login();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(addNewTitle));
@@ -88,13 +105,49 @@ public class ebook extends AbstractPage {
 
     }
 
-    public void remove() {
-
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.elementToBeClickable(removeButton));
+    public void removePositionFromList() {
+        login();
         removeButton.click();
     }
+
+
+    public void editPostion() {
+        login();
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        wait1.until(ExpectedConditions.elementToBeClickable(addNewTitle));
+        editButton.click();
+        title.clear();
+        title.sendKeys("edited title");
+        author.clear();
+        author.sendKeys("edited author");
+        year.clear();
+        year.sendKeys("2000");
+        editTitleSubmitButton.click();
+
+    }
+/////// operacje na ksiazkach
+
+    public void showCopies() {
+        login();
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        wait1.until(ExpectedConditions.elementToBeClickable(addNewTitle));
+        showCopiesButton.click();
+    }
+
+    public void addNewCopies() {
+        login();
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        wait1.until(ExpectedConditions.elementToBeClickable(addNewTitle));
+        showCopiesButton.click();
+        wait1.until(ExpectedConditions.elementToBeClickable(addNewCopiesButton));
+        addNewCopiesButton.click();
+        WebElement purchaseDate = driver.findElement(By.xpath("//*[@id='id']"));
+        purchaseDate.click();
+        WebElement yearCenter = driver.findElement(By.xpath("//*[@id=\"title-copies\"]"));
+        yearCenter.click();
+//        purchaseDate.sendKeys("20000101");
+//        addNewCopiesButton.click();
+
+
+    }
 }
-
-
-
