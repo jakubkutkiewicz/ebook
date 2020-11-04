@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -228,7 +227,17 @@ public class testEbook {
     @Test
     public void addNewCopyTest(){
         ebook ebook = new ebook(driver);
-        ebook.addNewCopies();
+        ebook.login();
+        WebDriverWait wait1 = new WebDriverWait(driver, 5);
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.showCopiesButton.click();
+        List<WebElement> listBefore = driver.findElements(By.xpath("//li[@id]"));
+        int listBeforeSize = listBefore.size();
+        for (int i = 0; i <listBeforeSize; i++);
+        System.out.println(listBeforeSize);
+//        ebook.addNewCopies();
+//        WebDriverWait wait = new WebDriverWait(driver, 5);
+//        wait.until(ExpectedConditions.)
     }
 }
 

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testEbook" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-04T16:23:53" hostname="DESKTOP-I95FIDH" time="7.381">
+<testsuite name="testEbook" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-04T17:29:49" hostname="DESKTOP-I95FIDH" time="6.399">
   <properties/>
-  <testcase name="addNewCopyTest" classname="testEbook" time="7.381"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 40696
+  <testcase name="addNewCopyTest" classname="testEbook" time="6.399"/>
+  <system-out><![CDATA[3
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 27037
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-lis 04, 2020 5:23:57 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+lis 04, 2020 6:29:53 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
