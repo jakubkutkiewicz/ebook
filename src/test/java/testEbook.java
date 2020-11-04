@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +39,10 @@ public class testEbook {
         WebDriverWait wait = new WebDriverWait(driver, 20);
     }
 
+//    @After
+//    public void closeDriver() {
+//        driver.close();
+//    }
 
     @Test
     public void testLoginPass() {
@@ -219,6 +224,7 @@ public class testEbook {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='return-button']")));
 
     }
+
     @Test
     public void addNewCopyTest(){
         ebook ebook = new ebook(driver);

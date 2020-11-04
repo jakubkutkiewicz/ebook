@@ -54,9 +54,6 @@ public class ebook extends AbstractPage {
     @FindBy(css = "button[name='add-item-button']")
     static WebElement addNewCopiesButton;
 
-//    @FindBy(css = "input[class='\"vdp-datepicker date-picker__input\"']")
-//    static WebElement purchaseDateCopy;
-
     @FindBy(css = "button[name='submit-button']")
     static WebElement addCopySubmitButton;
 
@@ -140,11 +137,13 @@ public class ebook extends AbstractPage {
         showCopiesButton.click();
         wait1.until(ExpectedConditions.elementToBeClickable(addNewCopiesButton));
         addNewCopiesButton.click();
-        WebElement purchaseDate = driver.findElement(By.xpath("//*[@id='id']"));
-        purchaseDate.click();
-        WebElement yearCenter = driver.findElement(By.xpath("//*[@id=\"title-copies\"]"));
-        yearCenter.click();
-//        purchaseDate.sendKeys("20000101");
+        addCopySubmitButton.click();
+//        WebElement purchaseDate = driver.findElement(By.xpath("//*[@id='id']"));
+//        purchaseDate.click();
+//        WebElement yearCenter = driver.findElement(By.xpath("//*[@id=\"title-copies\"]"));
+//        yearCenter.click();
+//        purchaseDate.click();
+//        yearCenter.sendKeys("20000101");
 //        addNewCopiesButton.click();
 
 

@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testEbook" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-17T10:42:39" hostname="DESKTOP-I95FIDH" time="9.704">
+<testsuite name="testEbook" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-04T16:23:53" hostname="DESKTOP-I95FIDH" time="7.381">
   <properties/>
-  <testcase name="removeTitleFromList" classname="testEbook" time="9.704"/>
-  <system-out><![CDATA[size list before add/remove position is:3
-size list before add/remove position is:3
-size list before add/remove position is:3
-size list after add/remove position is:3
-size list after add/remove position is:3
-size list after add/remove position is:3
-]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 11428
+  <testcase name="addNewCopyTest" classname="testEbook" time="7.381"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 40696
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-paź 17, 2020 12:42:44 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+lis 04, 2020 5:23:57 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
