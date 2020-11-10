@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,24 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.Objects;
 
 
 public class testEbook {
     WebDriver driver;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        testEbook testEbook = (testEbook) o;
-        return driver.equals(testEbook.driver);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(driver);
-    }
 
     @Before
     public void testSetup() {
@@ -38,10 +26,10 @@ public class testEbook {
         WebDriverWait wait = new WebDriverWait(driver, 20);
     }
 
-//    @After
-//    public void closeDriver() {
-//        driver.close();
-//    }
+    @After
+    public void closeDriver() {
+        driver.close();
+    }
 
     @Test
     public void testLoginPass() {
@@ -199,7 +187,7 @@ public class testEbook {
         int listAftersize = listAfter.size();
         for (int i = 0; i < listAftersize; i++)
             System.out.println("size list after add/remove position is:" + listAftersize);
-        Assert.assertEquals(listBeforesize, listAftersize);
+        Assert.assertEquals(listBeforesize + 1, listAftersize);
 
 
     }
@@ -225,19 +213,31 @@ public class testEbook {
     }
 
     @Test
-    public void addNewCopyTest(){
+    public void addNewCopyTest() {
         ebook ebook = new ebook(driver);
         ebook.login();
         WebDriverWait wait1 = new WebDriverWait(driver, 5);
         wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
         ebook.showCopiesButton.click();
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewCopiesButton));
         List<WebElement> listBefore = driver.findElements(By.xpath("//li[@id]"));
         int listBeforeSize = listBefore.size();
-        for (int i = 0; i <listBeforeSize; i++);
-        System.out.println(listBeforeSize);
-//        ebook.addNewCopies();
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.)
+        for (int i = 0; i < listBeforeSize; i++) ;
+        System.out.println("size list before added copy :" + listBeforeSize);
+        driver.navigate().refresh();
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.login));
+        ebook.addNewCopies();
+        driver.navigate().refresh();
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.login));
+        ebook.login();
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewTitle));
+        ebook.showCopiesButton.click();
+        wait1.until(ExpectedConditions.elementToBeClickable(ebook.addNewCopiesButton));
+        List<WebElement> listAfter = driver.findElements(By.xpath("//li[@id]"));
+        int listAfterSize = listAfter.size();
+        for (int i = 0; i < listAfterSize; i++) ;
+        System.out.println("size list after added copy" + listAfterSize);
+        Assert.assertEquals(listBeforeSize + 1, listAfterSize);
     }
 }
 
