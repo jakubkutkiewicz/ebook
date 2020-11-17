@@ -1,121 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testEbook" tests="14" skipped="0" failures="0" errors="0" timestamp="2020-11-10T15:14:22" hostname="DESKTOP-I95FIDH" time="101.714">
+<testsuite name="testEbook" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-10T16:51:28" hostname="DESKTOP-I95FIDH" time="12.184">
   <properties/>
-  <testcase name="testLoginPass" classname="testEbook" time="10.623"/>
-  <testcase name="registerNewUserFailedNoLogin" classname="testEbook" time="6.296"/>
-  <testcase name="addNewTitleTestFailNoTitle" classname="testEbook" time="7.562"/>
-  <testcase name="registerNewUserFailedDifferPassword" classname="testEbook" time="6.422"/>
-  <testcase name="showCopiesListTest" classname="testEbook" time="6.516"/>
-  <testcase name="editAllFieldsInPostion" classname="testEbook" time="5.991"/>
-  <testcase name="registerNewUserPass" classname="testEbook" time="6.122"/>
-  <testcase name="removeTitleFromList" classname="testEbook" time="8.187"/>
-  <testcase name="addNewTitleTestFailNoData" classname="testEbook" time="5.947"/>
-  <testcase name="addNewTitleTestFailNoYear" classname="testEbook" time="7.029"/>
-  <testcase name="addNewTitleTest" classname="testEbook" time="7.039"/>
-  <testcase name="addNewTitleTestFailNoWriter" classname="testEbook" time="6.497"/>
-  <testcase name="testloginFail" classname="testEbook" time="5.525"/>
-  <testcase name="addNewCopyTest" classname="testEbook" time="11.958"/>
-  <system-out><![CDATA[size list before add/remove position is:7
-size list before add/remove position is:7
-size list before add/remove position is:7
-size list before add/remove position is:7
-size list before add/remove position is:7
-size list before add/remove position is:7
-size list before add/remove position is:7
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list after add/remove position is:8
-size list before added copy :8
-size list after added copy9
+  <testcase name="addNewCopyTest" classname="testEbook" time="12.184"/>
+  <system-out><![CDATA[size list before added copy :10
+size list after added copy :11
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 29196
+  <system-err><![CDATA[Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 39023
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-lis 10, 2020 4:14:29 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 4727
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:14:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 11018
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:14:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 3085
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:14:50 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 44530
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:14:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 39906
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:03 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 23656
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:09 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 12258
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:15 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 38149
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:23 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 38054
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:29 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 18207
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 18913
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 48029
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:50 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 8444
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-lis 10, 2020 4:15:55 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+lis 10, 2020 5:51:32 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

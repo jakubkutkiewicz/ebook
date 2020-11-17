@@ -236,7 +236,7 @@ public class testEbook {
         List<WebElement> listAfter = driver.findElements(By.xpath("//li[@id]"));
         int listAfterSize = listAfter.size();
         for (int i = 0; i < listAfterSize; i++) ;
-        System.out.println("size list after added copy" + listAfterSize);
+        System.out.println("size list after added copy :" + listAfterSize);
         Assert.assertEquals(listBeforeSize + 1, listAfterSize);
     }
 }
